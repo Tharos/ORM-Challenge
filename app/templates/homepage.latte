@@ -1,0 +1,21 @@
+{layout @layout.latte}
+
+{block #content}
+<div class="article" n:foreach="$articles as $article">
+	<h3>{$article->title}</h3>
+
+	Category:
+	{if $article->category}
+		{$article->category->name}
+	{else}
+		<i>no category</i>
+	{/if}
+
+	{!$article->content_html}
+
+	Tags:
+	{foreach $article->tags as $tag}
+		{$tag->name}{sep}, {/sep}
+	{/foreach}
+	<i n:if="!count($article->tags)">no tags</i>
+</div>

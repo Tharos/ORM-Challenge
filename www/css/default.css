@@ -1,0 +1,86 @@
+body {
+	background: white;
+	font: 19px/25px Calibri, sans-serif;
+	color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Segoe UI', sans-serif;
+	font-weight: normal;
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+h1 {
+	font-size: 35px;
+	margin-top: 16px;
+	margin-bottom: 34px;
+}
+h2 {
+	font-size: 31px;
+	margin-top: 50px;
+	padding: 16px 16px 22px;
+	background: #e8f7dc;
+}
+h3 {
+	font-size: 27px;
+	margin-top: 50px;
+}
+h4 {
+	font-size: 23px;
+}
+
+p, ul, ol, table {
+	margin-bottom: 25px;
+}
+
+ul, ol {
+	padding-left: 40px;
+}
+ul ul {
+	margin-bottom: 0;
+}
+
+a {
+	color: #339900;
+	transition: 0.25s;
+}
+a:hover {
+	color: #9ad97b;
+}
+
+.container {
+	width: 940px;
+	margin: 0 auto;
+	position: relative;
+}
+
+#header {
+	padding: 35px 0 25px;
+}
+
+#body {
+	border-top: 1px solid #ddd;
+	min-height: 350px;
+	padding-top: 25px;
+	padding-bottom: 25px;
+	background: url('../img/gradient-grey.gif') left top repeat-x;
+}
+
+#footer {
+	margin-bottom: 50px;
+	padding-top: 25px;
+	border-top: 1px solid #ddd;
+	background: url('../img/gradient-grey.gif') left top repeat-x;
+	text-align: center;
+	font-size: 16px;
+	color: #aaa;
+}
+
+.siteLogo {
+	text-decoration: none;
+	font-family: 'Segoe UI', sans-serif;
+	font-size: 38px;
+}
+.siteLogo strong {
+	font-weight: normal;
+}

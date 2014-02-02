@@ -1,0 +1,69 @@
+leanmapper:
+
+	database:
+		driver: mysqli
+		user: root
+		password: XXXXXX
+		database: test
+		lazy: true
+
+parameters:
+
+	cacheDir: %tempDir%/cache
+
+	templatesDir: %appDir%/templates
+
+	fragmentsDirectories:
+		- %appDir%/fragments
+
+services:
+
+	appRequest:
+		class: Curious\AppRequest
+		factory: @Curious\IRouter::match
+
+	fragment:
+		class: Curious\Fragment
+		factory: @appRequest::getFragment
+
+	fragments:
+		class: Curious\Fragments
+		factory: @Curious\IFragmentsFactory::createFragments
+
+	httpRequest:
+		class: Nette\Http\Request
+		factory: @Nette\Http\RequestFactory::createHttpRequest
+
+	phpFileStorage:
+		class: Nette\Caching\Storages\PhpFileStorage(@\Directories::getCacheDirectory())
+		autowired: false
+
+	state:
+		class: Curious\State
+		factory: @appRequest::getState
+
+	url:
+		class: Nette\Http\Url
+		factory: @httpRequest::getUrl
+
+	view:
+		class: Nette\Templating\FileTemplate
+		factory: @\TemplateFactory::createTemplate
+
+	- Curious\CallbackCaller
+	- Curious\Linker
+	- Curious\FragmentsFactory(@\Directories::getFragmentsDirectories())
+	- Curious\Components
+
+	- Nette\Http\RequestFactory
+	- Nette\Utils\Finder
+
+	- Directories
+	- ErrorHandler(@\Directories::getTemplatesDirectory())
+	- Redirector
+	- Router
+	- TemplateFactory(@\Directories::getTemplatesDirectory(), @phpFileStorage)
+
+	- LeanMapper\DefaultEntityFactory
+	- Model\Mapper
+	- Model\Repository\ArticleRepository
