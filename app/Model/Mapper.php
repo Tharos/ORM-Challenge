@@ -51,7 +51,6 @@ class Mapper extends DefaultMapper
 		return array();
 	}
 
-
 	////////////////////
 	////////////////////
 
